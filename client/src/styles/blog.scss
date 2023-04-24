@@ -1,0 +1,94 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187,85%,43%), hsl(199,100%,33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240,240,246);
+    --cardBG: rgb(225,225, 235) ;
+  }
+
+.blog{
+    .secIntro{
+        text-align: center;
+        padding-bottom: 3rem;
+        .secTitle{
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        p{
+            font-size: 1rem;
+        }
+    }
+    .mainContainer{
+        gap:1rem;
+        .singlePost{
+            gap: 2rem;
+
+            .imgDiv{
+                height: 200px;
+                width: 100%;
+                border-radius: 1rem;
+                border: 5px solid var(--greyText);
+                box-shadow: 0 2px 8px 2px rgba(178, 178, 178, 0.406);
+                overflow: hidden;
+
+                &:hover{
+                    img{
+                        transform: scale(1.1);
+                        transition: 3s ease;
+                    }
+                }
+
+                img{
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .postDetails{
+                h3{
+                    color: var(--blackColor);
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    padding-bottom: 10px;
+                }
+                p{
+                    font-size: 13px;
+                    color: var(--textColor);
+                    font-weight: 500;
+                }
+
+            }
+
+            a{
+                font-size: 15px;
+                color: #dca73a;
+                font-weight: 600;
+                padding-top: .5rem;
+                width: max-content;
+
+                &:hover{
+                    color: var(--SecondaryColor);
+                    font-weight: 600;
+                    
+                    .icon{
+                        transform: translateX(10px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width:884px) {
+    .blog{
+        .mainContainer{
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+}

@@ -1,0 +1,70 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187,85%,43%), hsl(199,100%,33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240,240,246);
+    --cardBG: rgb(225,225, 235) ;
+  }
+
+.product_item{
+    cursor: pointer;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.product_info h3 a{
+    font-size: 1.2rem;
+    color:var(--blackColor) ;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.product_info a:hover{
+    color: inherit;
+}
+
+.product_info span{
+    font-size: .7rem;
+}
+
+.product_info p{
+    font-size: .7rem;
+}
+
+.product_card-bottom .price{
+    color: var(--blackColor);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gradientColor);
+}
+
+.product_card-bottom .add-now{
+    font-size: 1rem;
+    padding: 5px 8px;
+    background: #dca73a;
+    color: #fff;
+    border: 1px solid var(--gradientColor);
+    border-radius: 2px;
+}
+
+@media only screen and (max-width: 992px) {
+    .product_info h3 a{
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .product_info h3 a{
+        font-size: 1rem;
+    }
+
+    .product_card-bottom span i{
+        font-size: 1rem;
+    }
+}

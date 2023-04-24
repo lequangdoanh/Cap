@@ -1,0 +1,141 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187,85%,43%), hsl(199,100%,33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240,240,246);
+  --cardBG: rgb(225,225, 235) ;
+}
+
+.eminities .secContainer .title {
+  color: var(--blackColor);
+  line-height: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.eminities .secContainer .mainContent {
+  gap: 1rem;
+}
+.eminities .secContainer .mainContent .singleItem {
+  text-align: center;
+}
+.eminities .secContainer .mainContent .singleItem .icon {
+  font-size: 2rem;
+  color: var(--PrimaryColor);
+  font-weight: 600;
+}
+.eminities .secContainer .mainContent .singleItem h3 {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: black;
+  padding: 0.5rem;
+}
+.eminities .secContainer .mainContent .singleItem p {
+  font-size: 13px;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  color: var(--textColor);
+}
+.eminities .secContainer .videoCard {
+  margin-top: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.73), rgba(0, 0, 0, 0.609)), url(../../src/assets/images/bg.jpg);
+  background-position: center;
+  background: cover;
+  background-repeat: no-repeat;
+}
+.eminities .secContainer .videoCard .cardContent {
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+.eminities .secContainer .videoCard .cardContent .cardText h3 {
+  font-family: "Herr Von Muellerhoff";
+  font-size: 120px;
+  line-height: 160px;
+  font-style: normal;
+  color: #dedede;
+}
+.eminities .secContainer .videoCard .cardContent .cardText h2 {
+  text-align: center;
+  margin-top: -67px;
+  margin-bottom: 0px;
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.eminities .secContainer .videoCard .cardContent .cardText p {
+  font-family: "Dosis", sans-serif;
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.eminities .secContainer .videoCard .cardVideo {
+  border: 2px solid var(--whiteColor);
+  height: 200px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.eminities .secContainer .videoCard .cardVideo video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 576px) {
+  .mainContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .eminities .secContainer .mainContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .eminities .secContainer .videoCard .cardContent {
+    gap: 4rem;
+    padding: 4rem 3rem;
+  }
+  .eminities .secContainer .videoCard .cardContent .cardText h2 {
+    font-size: 1.3rem;
+  }
+  .eminities .secContainer .videoCard .cardContent .cardText p {
+    opacity: 0.7;
+    font-size: 13px;
+  }
+  .eminities .secContainer .videoCard .cardContent {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .eminities .secContainer .mainContent {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .eminities .secContainer .videoCard .cardContent {
+    gap: 3rem;
+    padding: 4rem 3rem;
+  }
+  .eminities .secContainer .videoCard .cardContent .cardText h2 {
+    font-size: 1.5rem;
+  }
+  .eminities .secContainer .videoCard .cardContent .cardText p {
+    opacity: 0.7;
+    font-size: 15px;
+  }
+  .eminities .secContainer .videoCard .cardContent {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media screen and (min-width: 1020px) {
+  .eminities .secContainer .mainContent {
+    padding: 2.5rem 0;
+  }
+}/*# sourceMappingURL=eminities.css.map */

@@ -1,0 +1,87 @@
+:root {
+  --card-bg-01: #fdefe6;
+  --card-bg-02: #d6e5fb;
+  --card-bg-03: #ceebe9;
+  --card-bg-04: #e2f2b2;
+  --primary-color: #0a1d37;
+  --hero-bg: #d6e5fb;
+  --heading-fontSize: 2rem;
+  --small-text-color: #999;
+  --heading-text-color: #0a1d37;
+  --colorOne:hsl(15, 74%, 70%);
+  --colorTwo:hsl(28, 100%, 82%);
+}
+
+.support .sectionContainer .titlesDiv {
+  text-align: center;
+}
+.support .sectionContainer .titlesDiv small {
+  letter-spacing: 0.8rem;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: black;
+  line-height: 1.5rem;
+}
+.support .sectionContainer .titlesDiv h2 {
+  font-size: 4rem;
+}
+.support .sectionContainer .titlesDiv p {
+  margin-top: 2rem;
+}
+.support .sectionContainer .infoDiv {
+  margin-top: 2rem;
+  gap: 1.5rem;
+}
+.support .sectionContainer .infoDiv .btn {
+  background: #dca73a;
+  color: #fdefe6;
+  margin-top: 2rem;
+  border-radius: 1px;
+}
+.support .sectionContainer .infoDiv .textDiv {
+  gap: 1.5rem;
+}
+.support .sectionContainer .infoDiv .textDiv .singleInfo .number {
+  background: var(--primary-color);
+  padding: 5px 12px;
+  width: 40px;
+  border-radius: 3rem;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+.support .sectionContainer .infoDiv .textDiv .singleInfo .colorOne {
+  background: var(--colorOne);
+}
+.support .sectionContainer .infoDiv .textDiv .singleInfo .colorTwo {
+  background: var(--colorTwo);
+}
+.support .sectionContainer .infoDiv .imgDiv {
+  margin: auto;
+}
+.support .sectionContainer .infoDiv .imgDiv img {
+  width: 100%;
+  max-width: 660px;
+}
+
+@media screen and (min-width: 570px) {
+  .support .sectionContainer .infoDiv .textDiv {
+    margin-top: 2rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .support .sectionContainer .infoDiv {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .support .sectionContainer .infoDiv .textDiv {
+    margin-top: 0rem;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .support .sectionContainer .infoDiv .textDiv .titlesDiv h2 {
+    font-size: 2rem;
+  }
+}/*# sourceMappingURL=support.css.map */

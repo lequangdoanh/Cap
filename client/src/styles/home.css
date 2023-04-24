@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Cormorant+Upright&display=swap');
+
+:root {
+    --card-bg-01: #fdefe6;
+    --card-bg-02: #d6e5fb;
+    --card-bg-03: #ceebe9;
+    --card-bg-04: #e2f2b2;
+    --primary-color: #0a1d37;
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --hero-bg: #d6e5fb;
+    --heading-fontSize: 2rem;
+    --small-text-color: #999;
+    --heading-text-color: #0a1d37;
+  }
+
+.hero_section{
+    background: url('../assets/images/footer.jpg');
+    background-size: cover;
+    background-position:center;
+    height: 25rem;
+} 
+
+.hero_content h2{
+    color: var(--card-bg-01);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px 0px;   
+}
+
+.hero_content p{
+    color: var(--card-bg-01);
+    line-height: 28px;
+}
+
+.hero_section p:nth-child(1){
+    font-weight: 500;
+}
+
+.support_info {
+    text-align: center;
+}
+.support_info h3{
+    font-family: 'Herr Von Muellerhoff';
+    font-size: 140px;
+    line-height: 160px;
+    font-style: normal;
+    color: #dedede;
+}
+.support_info p{
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.support_info .link-rooms{
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #dca73a;
+}
+.support_info .link-rooms:hover{
+    color: #0a1d37;
+}
+
+.support-img{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.support_info .support_title{
+    text-align: center;
+    margin-top: -67px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    line-height: 46px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.trending_product{
+    background-color: rgb(240, 238, 238);
+}
+.trending_product .back-title{
+    font-family: 'Herr Von Muellerhoff';
+    font-size: 140px;
+    line-height: 160px;
+    font-style: normal;
+    color: #dedede;
+}
+
+.trending_product p{
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.text-center h2{
+    text-align: center;
+    margin-top: -67px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    line-height: 46px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.text-center p{
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.buy_btn{
+    border: none;
+    outline: none;
+    padding: 8px 20px;
+    /* background: var(--primary-color); */
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 40px;
+}
+
+.buy_btn:hover{
+    background: white;
+    color: var(--SecondaryColor);
+}
+
+.hero_content{
+    padding-top: 45px;
+}
+
+.timer_count{
+    /* background: linear-gradient(to right,#3E5151, #DECBA4); */
+    background: url('../../src/assets/images/footer.jpg');
+    background-size: cover;
+    background-position:inherit;
+    height: 300px;
+    padding-top: 4rem;
+    margin-top: -2rem;
+}
+
+.timer_count img{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    margin-bottom: -10rem;
+}
+
+.store_btn{
+    background: #fff;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.store_btn a:hover{
+    color: var(--primary-color);
+}
+
+.eminities .text-center .back-title{
+    font-family: 'Herr Von Muellerhoff';
+    font-size: 140px;
+    line-height: 160px;
+    font-style: normal;
+    color: #dedede;
+}
+
+.eminities .text-center .section_title {
+    text-align: center;
+    margin-top: -67px;
+    margin-bottom: 0px;
+    font-size: 40px;
+    line-height: 46px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .hero_content h2{
+        font-size: 1.7rem;
+    }
+
+    .section_title{
+        font-size: 1.7rem;
+    }
+
+    .counter_img{
+        display: none;
+    }
+
+    .clock_top-content{
+        text-align: center;
+    }
+
+    .clock_top-content h4{
+        font-size: .9rem !important;
+    }
+    .clock_top-content h3{
+        font-size: 1rem !important;
+    }
+    .count_down-col{
+        text-align: center;
+    }
+    
+}
+
+@media only screen and (max-width: 768px) {
+    .hero_content h2{
+        font-size: 1.6rem;
+    }
+    .hero_content p{
+        font-size: 0.9rem;
+    }
+
+    .buy_btn a {
+        font-size: .9rem;
+
+    }
+    .section_title{
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .hero_content{
+        /* padding-top: 0; */
+        margin-bottom: 40px;
+    }
+
+    .support-img{
+        width: 350px;
+        height: max-content;
+    }
+
+    .content-img{
+        padding-bottom: 1rem;
+    }
+
+}
+
+
+

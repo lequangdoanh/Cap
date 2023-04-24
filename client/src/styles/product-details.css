@@ -1,0 +1,110 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --gradientColor: linear-gradient(to right, hsl(187,85%,43%), hsl(199,100%,33%));
+    --whiteColor: hsl(0, 0%, 100%);
+    --blackColor: hsl(201, 33%, 16%);
+    --textColor: hsl(240, 4%, 36%);
+    --whiteColorDeam: hsl(0, 0%, 93%);
+    --greyText: rgb(190, 190, 190);
+    --inputColor: rgb(239, 239, 239);
+    --bodyColor: rgb(240,240,246);
+    --cardBG: rgb(225,225, 235) ;
+  }
+
+.product_details{
+    margin-top: 30px;
+}
+
+.product_details h2{
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.product_details .buy_btn,
+.review_form .buy_btn{
+    background: #dca73a;
+}
+
+.product_details .buy_btn,
+.review_form .buy_btn:hover{
+    color: white;
+}
+
+.product_rating span i{
+    color: rgb(236, 208, 47);
+}
+
+.product_rating p span{
+    color: rgb(236, 208, 47);
+    font-weight: 500;
+}
+
+.product_price{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.tab_wrapper {
+    color: var(--PrimaryColor) ;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.active_tab{
+    font-weight: 600;
+}
+
+.tab_content p{
+    line-height: 30px;
+}
+
+.review_wrapper ul li span{
+    color: rgb(236, 208, 47);
+    font-weight: 600;
+}
+
+.review_wrapper ul li p{
+    margin-top: 10px;
+}
+
+.review_form{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.review_form h4{
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.form_group input, 
+.form_group textarea {
+    width: 100%;
+    border: 1px solid var(--PrimaryColor);
+    border-radius: 5px;
+    padding: 8px 20px;
+}
+
+.form_group input:focus, 
+.form_group textarea:focus{
+    outline: none;
+}
+
+.form_group{
+    margin-bottom: 30px;
+}
+
+.form_group span{
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    color: rgb(236, 208, 47);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+    

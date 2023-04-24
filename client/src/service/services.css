@@ -1,0 +1,77 @@
+:root {
+  --primaryColor:#797979;
+  --primaryHover:#0c988a;
+  --secHoverColor:#253b53;
+  --greyColor:#f7f7f7;
+}
+
+.cards {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  margin: auto;
+  z-index: 5000;
+}
+.cards .cardContainer .singleCard {
+  transform: translateY(-50px);
+  height: 250px;
+  width: 100%;
+  padding: 0 15px;
+  position: relative;
+  transition: 0.5s;
+}
+.cards .cardContainer .singleCard::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  border-radius: 10px;
+}
+.cards .cardContainer .singleCard .imgDiv {
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.cards .cardContainer .singleCard .imgDiv img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+.cards .cardContainer .singleCard .textDiv {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  color: white;
+  font-size: 1.3rem;
+  z-index: 5;
+}
+.cards .spanText {
+  text-align: center;
+  transform: translateY(-50px);
+  padding-top: 1.5rem;
+  margin: auto;
+  gap: 0.5rem;
+}
+.cards .spanText:hover {
+  font-weight: 600;
+}
+.cards .spanText:hover .icon {
+  transition: 0.4s;
+  transform: translate(10px);
+}
+
+@media screen and (min-width: 520px) {
+  .cards .cardContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 820px) {
+  .cards .cardContainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}/*# sourceMappingURL=services.css.map */

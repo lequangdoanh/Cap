@@ -1,0 +1,37 @@
+.lounge .sectionContainer {
+  gap: 1.5rem;
+}
+.lounge .sectionContainer .imgDiv {
+  margin: auto;
+}
+.lounge .sectionContainer .imgDiv img {
+  width: 100%;
+  max-width: 430px;
+}
+.lounge .sectionContainer .textDiv .grids {
+  margin-top: 1rem;
+  gap: 1.5rem;
+}
+.lounge .sectionContainer .textDiv .grids .singleGrid .gridTitle {
+  display: block;
+  padding-bottom: 0.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+@media screen and (min-width: 570px) {
+  .lounge .sectionContainer .textDiv .grids {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 768px) {
+  .lounge .sectionContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lounge .sectionContainer .textDiv {
+    grid-area: 1;
+  }
+  .lounge .sectionContainer .textDiv .grids {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}/*# sourceMappingURL=feature.css.map */
