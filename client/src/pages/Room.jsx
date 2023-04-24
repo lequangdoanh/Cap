@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import CommoSection from '../components/UI/CommonSection';
+import CommonSection from '../components/UI/CommonSection';
 import Helmet from '../components/Helmet/Helmet';
 import { Container, Row, Col } from 'reactstrap';
 import {AiOutlineSearch} from 'react-icons/ai';
@@ -41,11 +41,11 @@ const Room = () => {
 
       const searchedProducts = products.filter(item => item.productName.toLowerCase().includes(searchTerm.toLowerCase()))
 
-      setProductData(searchedProducts)
+      setProductData(searchedProducts);
     }
 
   return <Helmet title=' Room'>
-    <CommoSection title='Products' />
+    <CommonSection title='All Room Services ' />
 
     <section>
       <Container>
