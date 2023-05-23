@@ -1,111 +1,226 @@
-import React from 'react';
-import './footer.css';
-import { motion } from 'framer-motion';
+import {
+  faBed,
+  faCalendarDays,
+  faCar,
+  faPerson,
+  faPlane,
+  faTaxi,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./header.css";
+import { DateRange } from "react-date-range";
+import { useContext, useState } from "react";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 
-import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import { SiDeepnote } from 'react-icons/si';
+const Header = ({ type }) => {
+  const [destination, setDestination] = useState("");
+  const [openDate, setOpenDate] = useState(false);
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [openOptions, setOpenOptions] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
 
-import {FaLocationArrow} from 'react-icons/fa'
-import {BsFillTelephoneInboundFill} from 'react-icons/bs'
-import {MdEmail} from 'react-icons/md'
-import {BsFacebook} from 'react-icons/bs'
-import {BsTwitter} from 'react-icons/bs'
-import {BsYoutube} from 'react-icons/bs'
-import footer from '../../assets/images/cap-footer.JPG'
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-const Footer = () => {
+  const handleOption = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
 
-  const year = new Date().getFullYear()
-  return <footer className="footer">
-    
-    {/* <img src={footer} alt="" /> */}
-    <Container>
-    <hr/>
-      <Row>
-        <Col lg='3' className='mb-4' md='3'>
-            <div className="footer_quick_links">
-            <h1 className="quick_links_title">
-            <SiDeepnote className='icon-brand'/> Tiffany.
+  const { dispatch } = useContext(SearchContext);
+
+  const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
+  };
+
+  // const handleRedictLogin = () => {
+  //   navigate("/login");
+  // };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
+  return (
+    <div className="header">
+      <div
+        className={
+          type === "list" ? "headerContainer listMode" : "headerContainer"
+        }
+      >
+        <div className="headerList">
+          <div className="headerListItem active">
+            <FontAwesomeIcon icon={faBed} />
+            <span>Stays</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faPlane} />
+            <span>Flights</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faCar} />
+            <span>Car rentals</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faBed} />
+            <span>Attractions</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faTaxi} />
+            <span>Airport taxis</span>
+          </div>
+        </div>
+        {type !== "list" && (
+          <>
+            <h1 className="headerTitle">
+              A lifetime of discounts? It's Genius.
             </h1>
-            <ListGroup className='footer_contact'> 
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2' >
-                <span><FaLocationArrow className='icon'/></span>
-                <p>DaNang,VietNam</p>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-                <span><BsFillTelephoneInboundFill className='icon'/></span>
-                <p>+0387.870.788</p>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0 d-flex align-items-center gap-2'>
-               <span><MdEmail className='icon'/></span>
-               <p>support@tiffany.com</p>
-              </ListGroupItem>
-            </ListGroup>
-          </div>
-        </Col>
-        <Col lg='3' md='3' className='mb-4'>
-          <div className="footer_quick_links">
-            <h4 className="quick_links_title">
-              ABOUT US
-            </h4>
-            <ListGroup className='mb-3'> 
-              <ListGroupItem className='ps-0 border-0'>
-                <Link to="#" >Services</Link>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0'>
-                <Link to="#" >Rooms</Link>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0'>
-                <Link to="#" >Our Location</Link>
-              </ListGroupItem>
-              
-            </ListGroup>
-          </div>
-        </Col>
-        <Col lg='3' md='3' className='mb-4'>
-        <div className="footer_quick_links">
-            <h4 className="quick_links_title">
-            QUICK LINKS
-            </h4>
-            <ListGroup className='mb-3'> 
-              <ListGroupItem className='ps-0 border-0' >
-                <Link to="#" ><BsFacebook className='icon'/> Facebook</Link>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0'>
-                <Link to="#" ><BsYoutube className='icon'/> YouTube</Link>
-              </ListGroupItem>
-              <ListGroupItem className='ps-0 border-0'>
-                <Link to="#" ><BsTwitter className='icon'/> Pinterest</Link>
-              </ListGroupItem>
-            </ListGroup>
-          </div>
-        </Col>
-        <Col lg='3' md='3'>
-        <div className="footer_quick_links">
-            <h4 className="quick_links_title ">
-            NEWSLETTER
-            </h4>
-            
-            <div className='form-contact'>
-              <p>Sign up for special offers</p>
-                <input type="text" placeholder='Enter Your Email ...'/>
-                <motion.button whileTap={{scale:1.2}} className='btn-contact flex' type='submit'>
-                Subcribe <FaLocationArrow className='icon-contact'/>
-                  </motion.button>
-            </div>
-          </div>
-        </Col>
-        <Col lg='12'>
-          <div className='footer_copyright'>
-          <p>
-            Copyright {year} All rights reserved | Hotel Chain Management System
+            <p className="headerDesc">
+              Get rewarded for your travels – unlock instant savings of 10% or
+              more with a free HCMSbooking account
             </p>
-          </div>
-        </Col>
-      </Row>
-    </Container>
-  </footer>
-}
+            {/* {!user && (
+              <button className="headerBtn" onClick={handleRedictLogin}>
+                Sign in / Register
+              </button>
+            )}  */}
+            {user && <button onClick={handleLogout}>Logout</button>} 
+            <div className="headerSearch">
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faBed} className="headerIcon" />
+                <input
+                  type="text"
+                  placeholder="Where are you going?"
+                  className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
+                />
+              </div>
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+                <span
+                  onClick={() => setOpenDate(!openDate)}
+                  className="headerSearchText"
+                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                  dates[0].endDate,
+                  "MM/dd/yyyy"
+                )}`}</span>
+                {openDate && (
+                  <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDates([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={dates}
+                    className="date"
+                    minDate={new Date()}
+                  />
+                )}
+              </div>
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                <span
+                  onClick={() => setOpenOptions(!openOptions)}
+                  className="headerSearchText"
+                >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
+                {openOptions && (
+                  <div className="options">
+                    <div className="optionItem">
+                      <span className="optionText">Adult</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.adult <= 1}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.adult}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="optionItem">
+                      <span className="optionText">Children</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.children <= 0}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.children}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="optionItem">
+                      <span className="optionText">Room</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.room <= 1}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("room", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.room}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("room", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="headerSearchItem">
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
-export default Footer
+export default Header;
