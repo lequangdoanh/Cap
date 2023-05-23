@@ -1,119 +1,226 @@
-import React, {useRef, useEffect} from 'react'
-import { NavLink } from 'react-router-dom'
-// import userIcon from '../../assets/images/user-icon.png'
-import './header.css'
+import {
+  faBed,
+  faCalendarDays,
+  faCar,
+  faPerson,
+  faPlane,
+  faTaxi,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./header.css";
+import { DateRange } from "react-date-range";
+import { useContext, useState } from "react";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
 
-import {motion} from 'framer-motion'
-
-import {SiDeepnote} from 'react-icons/si'
-// import {BsChatHeart} from 'react-icons/bs'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
-import {FaUserCircle} from 'react-icons/fa' 
-import {TbGridDots} from 'react-icons/tb'
-
-
-import { Container, Row } from 'reactstrap'
-
-const nav_links = [
-  {
-    path: 'home',
-    display: 'Home'
-  },
-  {
-    path: 'room',
-    display: 'Room'
-  },
-  {
-    path: 'feature',
-    display: 'Feature'
-  },
-  {
-    path: 'blog',
-    display: 'Blog'
-  },
-  {
-    path: 'contact',
-    display: 'Contact'
-  },
-]
-
-
-const Header = () => {
-
-  const headerRef = useRef(null)
-  const menuRef = useRef(null)
-  
-  const stickyHeaderFunc = () => {
-    window.addEventListener('scroll', ()=>{
-      if(
-        document.body.scrollTop > 70 || document.documentElement.scrollTop > 70){
-        headerRef.current.classList.add('sticky_header');
-      }
-      else{
-        headerRef.current.classList.remove('sticky_header')
-      }
-    });
-  };
-  useEffect(() => {
-    stickyHeaderFunc()
-
-    return () => window.removeEventListener("scroll" , stickyHeaderFunc);
+const Header = ({ type }) => {
+  const [destination, setDestination] = useState("");
+  const [openDate, setOpenDate] = useState(false);
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  const [openOptions, setOpenOptions] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
   });
 
-  const menuToggle = () => menuRef.current.classList.toggle('active_menu')
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  return <header className="header" ref={headerRef}>
-    <Container>
-      <Row>
-        <div className="nav_wrapper">
-          <div className="logo">
-            <SiDeepnote/>
-            <div>
-              <h1>
-               <NavLink to="/home">Tiffany.</NavLink> 
-                </h1>
-            </div>
+  const handleOption = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === "i" ? options[name] + 1 : options[name] - 1,
+      };
+    });
+  };
+
+  const { dispatch } = useContext(SearchContext);
+
+  const handleSearch = () => {
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/hotels", { state: { destination, dates, options } });
+  };
+
+  // const handleRedictLogin = () => {
+  //   navigate("/login");
+  // };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
+  return (
+    <div className="header">
+      <div
+        className={
+          type === "list" ? "headerContainer listMode" : "headerContainer"
+        }
+      >
+        <div className="headerList">
+          <div className="headerListItem active">
+            <FontAwesomeIcon icon={faBed} />
+            <span>Stays</span>
           </div>
-
-          <div className="navigation" ref={menuRef} onClick={menuToggle}>
-            <ul className="menu">
-              
-              {
-                nav_links.map((item, index) =>(
-                  <li className="nav_item" key={index}>
-                    <NavLink to={item.path} className={(navClass) => navClass.isActive ? 'nav_active' :''} >{item.display}</NavLink>
-                  </li>
-                ))
-              }
-            </ul>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faPlane} />
+            <span>Flights</span>
           </div>
-
-          <div className="nav_icons">
-            {/* <span className='fav_icon'>
-              <BsChatHeart/>
-              <span className='badge'>1</span>
-            </span> */}
-            <span className='cart_icon'>
-              <AiOutlineShoppingCart/>
-              <span className='badge'>1</span>
-            </span>
-            {/* <span>
-              <motion.img whileTap={{ scale:1.2 }} src={userIcon} alt="" />
-            </span> */}
-            <span><NavLink to='/login'>Login</NavLink></span>
-            <span><NavLink to='/signup'>Signup</NavLink></span>
-
-            <div className='mobile_menu'>
-              <span onClick={menuToggle}>
-                <TbGridDots/>
-              </span>
-            </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faCar} />
+            <span>Car rentals</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faBed} />
+            <span>Attractions</span>
+          </div>
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faTaxi} />
+            <span>Airport taxis</span>
           </div>
         </div>
-      </Row>
-    </Container>
-  </header>
+        {type !== "list" && (
+          <>
+            <h1 className="headerTitle">
+              A lifetime of discounts? It's Genius.
+            </h1>
+            <p className="headerDesc">
+              Get rewarded for your travels – unlock instant savings of 10% or
+              more with a free HCMSbooking account
+            </p>
+            {/* {!user && (
+              <button className="headerBtn" onClick={handleRedictLogin}>
+                Sign in / Register
+              </button>
+            )}  */}
+            {user && <button onClick={handleLogout}>Logout</button>} 
+            <div className="headerSearch">
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faBed} className="headerIcon" />
+                <input
+                  type="text"
+                  placeholder="Where are you going?"
+                  className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
+                />
+              </div>
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
+                <span
+                  onClick={() => setOpenDate(!openDate)}
+                  className="headerSearchText"
+                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
+                  dates[0].endDate,
+                  "MM/dd/yyyy"
+                )}`}</span>
+                {openDate && (
+                  <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDates([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={dates}
+                    className="date"
+                    minDate={new Date()}
+                  />
+                )}
+              </div>
+              <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
+                <span
+                  onClick={() => setOpenOptions(!openOptions)}
+                  className="headerSearchText"
+                >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
+                {openOptions && (
+                  <div className="options">
+                    <div className="optionItem">
+                      <span className="optionText">Adult</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.adult <= 1}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.adult}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("adult", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="optionItem">
+                      <span className="optionText">Children</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.children <= 0}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.children}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("children", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="optionItem">
+                      <span className="optionText">Room</span>
+                      <div className="optionCounter">
+                        <button
+                          disabled={options.room <= 1}
+                          className="optionCounterButton"
+                          onClick={() => handleOption("room", "d")}
+                        >
+                          -
+                        </button>
+                        <span className="optionCounterNumber">
+                          {options.room}
+                        </span>
+                        <button
+                          className="optionCounterButton"
+                          onClick={() => handleOption("room", "i")}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="headerSearchItem">
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
 };
 
-export default Header
-
+export default Header;
