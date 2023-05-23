@@ -1,228 +1,130 @@
-/* Color */
-:root {
-    --PrimaryColor: hsl(199, 100%, 33%);
-    --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187,85%,43%), hsl(199,100%,33%));
-    --whiteColor: hsl(0, 0%, 100%);
-    --blackColor: hsl(201, 33%, 16%);
-    --textColor: hsl(240, 4%, 36%);
-    --whiteColorDeam: hsl(0, 0%, 93%);
-    --greyText: rgb(190, 190, 190);
-    --inputColor: rgb(239, 239, 239);
-    --bodyColor: rgb(240,240,246);
-    --cardBG: rgb(225,225, 235) ;
-  }
-
-.header{
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
+.header {
+  /* background-image: url(/src/images/footer.jpg) ; */
+  background-color: #003580;
+  background-position: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
-.nav_wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.headerContainer {
+  width: 100%;
+  max-width: 1024px;
+  margin: 20px 0px 100px 0px;
 }
 
-.logo{
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
+.headerContainer.listMode {
+  margin: 20px 0px 0px 0px;
 }
 
-.logo img{
-    width: 1.5rem;
-    height: 1.5rem;
+.headerList {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
 }
 
-.logo h1{
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--PrimaryColor);
+.headerListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.menu{
-    display: flex;
-    align-items: center;
-    column-gap: 2.7rem;
-    margin-bottom: 0; 
+.headerListItem.active {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 20px;
 }
 
-.nav_Item a{
-    color: var(--PrimaryColor);
-    font-weight: 500;
-    cursor: pointer;
-    bottom: 3rem;
+.headerDesc {
+  margin: 20px 0px;
 }
 
-.nav_icons{
-    display: flex;
-    align-items: center;
-    column-gap: 1.2rem;
-    cursor: pointer;
+.headerBtn {
+  background-color: #0071c2;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
 
-.nav_icons span i{
-    font-size: 1.4rem;
-    color: var(--PrimaryColor);
-    cursor: pointer;
+.headerSearch {
+  height: 30px;
+  background-color: white;
+  border: 3px solid #febb02;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -25px;
+  width: 100%;
+  max-width: 1024px;
 }
 
-.cart_icon,
-.fav_icon {
-    position: relative;
-    font-size: 1.6rem;
+.headerIcon {
+  color: lightgray;
 }
 
-.badge{
-    position: absolute;
-    top: 25%;
-    right: -8%;
-    width: 15px;
-    height: 15px;
-    content: '';
-    background: var(--PrimaryColor);
-    color: #fff;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 600;
-    z-index: 10;
+.headerSearchItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.nav_icons span img{
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+.headerSearchInput {
+  border: none;
+  outline: none;
 }
 
-.mobile_menu{
-    font-size: 1.3rem;
-    color: var(--PrimaryColor);
-    display: none;
+.headerSearchText {
+  color: lightgray;
+  cursor: pointer;
 }
 
-.nav_active{
-    font-weight: 700 !important;
+.date {
+  position: absolute;
+  top: 50px;
+  z-index: 2;
 }
 
-.sticky_header{
-    width: 100%;
-    height: 70px;
-    line-height: 70px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    box-shadow: 3px 3px 8px -3px #ddd;
-    background: #fff;
+.options {
+  z-index: 2;
+  position: absolute;
+  top: 50px;
+  background-color: white;
+  color: gray;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
 }
 
-@media only screen and (max-width:768px) {
-    .navigation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:rgba(0,0,0,0.53);
-        z-index: 9999;
-        display: none;
-    }
-
-    .menu{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 250px;
-        height: 100%;
-        background: #fff;
-        z-index: 99999;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .active_menu{
-        display: block;
-    }
-
-    .mobile_menu span i{
-        font-size: 1.1rem !important;
-    }
-
-    .mobile_menu{
-        display: block;
-    }
-
-    .fav_icon i, .cart_icon{
-        font-size: 1.2rem !important;
-    }
-
-    .nav_icons span img{
-        width: 1.4rem;
-        height: 1.4rem;
-    }
-
-    .header{
-        width: 100%;
-        height: 50px;
-        line-height: 50px;
-    }
+.optionItem {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
 }
 
-@media only screen and (max-width:990px) {
-    .navigation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background:rgba(0,0,0,0.53);
-        z-index: 9999;
-        display: none;
-    }
+.optionCounter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: black;
+}
 
-    .menu{
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 250px;
-        height: 100%;
-        background: #fff;
-        z-index: 99999;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+.optionCounterButton {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #0071c2;
+  color: #0071c2;
+  cursor: pointer;
+  background-color: white;
+}
 
-    .active_menu{
-        display: block;
-    }
-
-    .mobile_menu span i{
-        font-size: 1.1rem !important;
-    }
-
-    .mobile_menu{
-        display: block;
-    }
-
-    .fav_icon i, .cart_icon{
-        font-size: 1.2rem !important;
-    }
-
-    .nav_icons span img{
-        width: 1.4rem;
-        height: 1.4rem;
-    }
-
-    .header{
-        width: 100%;
-        height: 50px;
-        line-height: 50px;
-    }
+.optionCounterButton:disabled {
+  cursor: not-allowed;
 }
