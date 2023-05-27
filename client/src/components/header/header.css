@@ -1,5 +1,6 @@
 .header {
-  background-image: url(/src/images/footer.jpg) ;
+  /* background-image: url(/src/images/footer.jpg) ; */
+  background-color: #003580;
   background-position: center;
   color: white;
   display: flex;
@@ -74,7 +75,7 @@
 }
 
 .headerSearchInput {
-  border: none;
+  border: none !important;
   outline: none;
 }
 

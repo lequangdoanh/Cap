@@ -25,29 +25,29 @@ const Single = () => {
             <div className="item">
               <img
                 src={user?.img ? user?.img :
-                 "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"}
+                 "https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-6/326822085_1614485892401089_1802332875703281896_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_ohc=9X1NiUavTUQAX-t811n&_nc_ht=scontent.fdad1-1.fna&oh=00_AfAAyuxDTWFoq7d5zhE-S6bZIrTTJavsHDnfq9jTYDMbmg&oe=646E458D"}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">Jane Doe</h1>
+                <h1 className="itemTitle">Quang Doanh</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">janedoe@gmail.com</span>
+                  <span className="itemValue">lequangdoanh888@gmail.com</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">+1 2345 67 89</span>
+                  <span className="itemValue">+84.38.787.0788</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
+                    254 Nguyễn Văn Linh, Đà Nẵng
                   </span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Country:</span>
-                  <span className="itemValue">USA</span>
+                  <span className="itemValue">Việt Nam</span>
                 </div>
               </div>
             </div>

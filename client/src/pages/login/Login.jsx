@@ -12,7 +12,7 @@ const Login = () => {
 
   const { loading, error, dispatch } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -24,40 +24,36 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/")
+      navigate("/");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
 
-
   return (
     <div className="login">
       <div className="lContainer">
         <h1>Login</h1>
-          <input
-            type="text"
-            placeholder="Enter your User"
-            id="username"
-            onChange={handleChange}
-            className="lInput"
+        <input
+          type="text"
+          placeholder="Enter your User"
+          id="username"
+          onChange={handleChange}
+          className="lInput"
         />
-          <input
-            type="password"
-            placeholder="Enter your Password"
-            id="password"
-            onChange={handleChange}
-            className="lInput"
+        <input
+          type="password"
+          placeholder="Enter your Password"
+          id="password"
+          onChange={handleChange}
+          className="lInput"
         />
-        
-
-          <button disabled={loading} onClick={handleClick} className="lButton">
-            Login
-          </button>
-          {error && <span>{error.message}</span>}
-          Don't have an account? <Link to = '/register'> Create an account</Link>
-             
-        </div>
+        <button disabled={loading} onClick={handleClick} className="lButton">
+          Login
+        </button>
+        {error && <span>{error.message}</span>}
+        Don't have an account? <Link to="/register"> Create an account</Link>
+      </div>
     </div>
   );
 };

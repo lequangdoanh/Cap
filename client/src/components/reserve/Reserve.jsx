@@ -13,6 +13,8 @@ const Reserve = ({ setOpen, hotelId }) => {
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
 
+  console.log("data", data);
+
   const getDatesInRange = (startDate, endDate) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -61,6 +63,10 @@ const Reserve = ({ setOpen, hotelId }) => {
           return res.data;
         })
       );
+      localStorage.setItem(
+        "room-user",
+        JSON.stringify(data?.filter((item) => item?._id))
+      );
       setOpen(false);
       navigate("/");
     } catch (err) {}
@@ -75,22 +81,22 @@ const Reserve = ({ setOpen, hotelId }) => {
         />
         <span>Select your rooms:</span>
         {data.map((item) => (
-          <div className="rItem" key={item._id}>
+          <div className="rItem" key={item?._id}>
             <div className="rItemInfo">
-              <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
+              <div className="rTitle">{item?.title}</div>
+              <div className="rDesc">{item?.desc}</div>
               <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
+                Max people: <b>{item?.maxPeople}</b>
               </div>
-              <div className="rPrice">{item.price}</div>
+              <div className="rPrice">{item?.price}</div>
             </div>
             <div className="rSelectRooms">
-              {item.roomNumbers.map((roomNumber) => (
+              {item?.roomNumbers?.map((roomNumber) => (
                 <div className="room">
-                  <label>{roomNumber.number}</label>
+                  <label>{roomNumber?.number}</label>
                   <input
                     type="checkbox"
-                    value={roomNumber._id}
+                    value={roomNumber?._id}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
                   />
@@ -102,6 +108,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         <button onClick={handleClick} className="rButton">
           Reserve Now!
         </button>
+        {/* navigate("/login") */}
       </div>
     </div>
   );

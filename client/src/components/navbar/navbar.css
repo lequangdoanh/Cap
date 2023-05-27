@@ -1,24 +1,41 @@
-.navbar{
+.navbar {
   height: 50px;
-  background-image: url(/src/images/footer.jpg) ;
+  /* background-image: url(/src/images/footer.jpg) ; */
+  background-color: #003580;
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 }
 
-.navContainer{
+.navContainer {
   width: 100%;
   max-width: 1024px;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 15px;
 }
 
-.logo{
-  font-weight: 500;
+.wrap-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.navButton{
+.btn-logout {
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.navButton {
   margin-left: 20px;
   border: none;
   padding: 5px 10px;

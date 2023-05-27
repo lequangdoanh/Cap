@@ -57,11 +57,6 @@ const Header = ({ type }) => {
   //   navigate("/login");
   // };
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
-  };
-
   return (
     <div className="header">
       <div
@@ -105,7 +100,6 @@ const Header = ({ type }) => {
                 Sign in / Register
               </button>
             )}  */}
-            // {user && <button onClick={handleLogout}>Logout</button>} 
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

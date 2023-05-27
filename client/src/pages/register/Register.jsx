@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "./register.css";
+import "../login/login.css";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -12,7 +12,7 @@ const Login = () => {
 
   const { loading, error } = useContext(AuthContext);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -20,43 +20,40 @@ const Login = () => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-   
+
     try {
       const res = await axios.post("/auth/register", credentials);
-      
-      navigate("/login")
-    } catch (err) {
-     
-    }
+
+      navigate("/login");
+    } catch (err) {}
   };
 
-
   return (
-    <div className="register">
+    <div className="login">
       <div className="lContainer">
         <h1>Register</h1>
-      <input
+        <input
           type="text"
           placeholder="Enter your Country"
           id="country"
           onChange={handleChange}
           className="lInput"
         />
-      <input
+        <input
           type="text"
           placeholder="Enter your City"
           id="city"
           onChange={handleChange}
           className="lInput"
         />
-      <input
+        <input
           type="text"
           placeholder="Enter your Phone"
           id="phone"
           onChange={handleChange}
           className="lInput"
         />
-      <input
+        <input
           type="text"
           placeholder="Enter your Email"
           id="email"
